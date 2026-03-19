@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Sales Assistant ROI Calculator | ZapSight</title>
+    <meta name="description" content="Calculate how much revenue your furniture retail website is leaving on the table without an AI sales assistant.">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+            min-height: 100vh;
+            color: #f5f5f5;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Ambient light effects */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -20%;
+            left: -10%;
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(ellipse, rgba(180, 60, 80, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -30%;
+            right: -20%;
+            width: 70%;
+            height: 70%;
+            background: radial-gradient(ellipse, rgba(120, 40, 80, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Navigation */
+        nav {
+            position: relative;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 48px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 36px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            color: #a3a3a3;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav-cta {
+            background: #f97316 !important;
+            color: #fff !important;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: #ea580c !important;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 16px 20px;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Main content */
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+
+        h1 .white {
+            color: #fff;
+        }
+
+        h1 .gradient {
+            background: linear-gradient(135deg, #f472b6 0%, #f97316 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .subtitle {
+            font-size: 1.125rem;
+            color: #a3a3a3;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Stats callout */
+        .stat-callout-wrapper {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .stat-callout {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: rgba(249, 115, 22, 0.1);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            border-radius: 100px;
+            font-size: 0.875rem;
+            color: #fdba74;
+        }
+
+        /* Calculator card */
+        .calculator-card {
+            background: rgba(23, 23, 23, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 32px;
+            backdrop-filter: blur(20px);
+        }
+
+        @media (max-width: 600px) {
+            .calculator-card {
+                padding: 24px;
+                border-radius: 16px;
+            }
+        }
+
+        .input-group {
+            margin-bottom: 28px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #a3a3a3;
+            margin-bottom: 10px;
+        }
+
+        .input-group input[type="text"] {
+            width: 100%;
+            padding: 16px 18px;
+            font-size: 1rem;
+            font-family: inherit;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .input-group input[type="text"]:focus {
+            outline: none;
+            border-color: #f97316;
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+        }
+
+        .input-group input[type="text"]::placeholder {
+            color: #525252;
+        }
+
+        .input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .input-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Sliders */
+        .slider-group {
+            margin-bottom: 28px;
+        }
+
+        .slider-group label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #a3a3a3;
+            margin-bottom: 14px;
+        }
+
+        .slider-value {
+            color: #f97316;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .slider-group input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .slider-group input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(249, 115, 22, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .slider-group input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+
+        .slider-hint {
+            color: #525252;
+            font-size: 0.75rem;
+            margin-top: 8px;
+        }
+
+        /* Results card */
+        .results-card {
+            background: rgba(23, 23, 23, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            backdrop-filter: blur(20px);
+        }
+
+        @media (max-width: 600px) {
+            .results-card {
+                padding: 28px 20px;
+                border-radius: 16px;
+            }
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 36px;
+        }
+
+        @media (max-width: 500px) {
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .result-item {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+        }
+
+        .result-item .label {
+            font-size: 0.75rem;
+            color: #737373;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .result-item .value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .big-number {
+            margin-bottom: 24px;
+        }
+
+        .big-number .label {
+            font-size: 1rem;
+            color: #a3a3a3;
+            margin-bottom: 12px;
+        }
+
+        .big-number .value {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f472b6 0%, #f97316 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @media (max-width: 600px) {
+            .big-number .value {
+                font-size: 2.75rem;
+            }
+        }
+
+        .hook-text {
+            font-size: 1rem;
+            color: #a3a3a3;
+            margin-top: 8px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: inherit;
+            color: #fff;
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(249, 115, 22, 0.35);
+        }
+
+        .cta-button svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .secondary-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #a3a3a3;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-left: 16px;
+            transition: all 0.2s;
+        }
+
+        .secondary-button:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        @media (max-width: 600px) {
+            .secondary-button {
+                margin-left: 0;
+                margin-top: 12px;
+            }
+        }
+
+        /* Assumptions */
+        .assumptions {
+            margin-top: 56px;
+            padding: 28px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            font-size: 0.875rem;
+            color: #525252;
+        }
+
+        .assumptions h3 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #737373;
+            margin-bottom: 16px;
+        }
+
+        .assumptions ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .assumptions li {
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .assumptions li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 6px;
+            height: 6px;
+            background: #f97316;
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        .assumptions strong {
+            color: #a3a3a3;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 56px;
+            padding-top: 28px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            color: #525252;
+            font-size: 0.875rem;
+        }
+
+        footer a {
+            color: #f97316;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: #fb923c;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="logo">
+            <img src="/logo.jpg" alt="ZapSight" class="logo-img">
+        </a>
+        <div class="nav-links">
+            <a href="/#solutions">Solutions</a>
+            <a href="/#case-study">Case Study</a>
+            <a href="https://zapsight.com" target="_blank">Zapsight.com</a>
+            <a href="mailto:blake@zapsight.com" class="nav-cta">Book a Call</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>
+                <span class="white">How Much Revenue Is Your Website</span><br>
+                <span class="gradient">Leaving on the Table?</span>
+            </h1>
+            <p class="subtitle">Customers who engage with AI shopping assistants convert significantly higher than those who don't. Calculate your opportunity.</p>
+        </header>
+
+        <div class="stat-callout-wrapper">
+            <div class="stat-callout">
+                <span>📊</span>
+                <span>67% of shoppers trust a retailer's own AI over third-party tools</span>
+            </div>
+        </div>
+
+        <div class="calculator-card">
+            <div class="input-group">
+                <label for="visitors">Monthly Website Visitors</label>
+                <input type="text" id="visitors" placeholder="e.g., 10,000" inputmode="numeric">
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="conversion">Current Conversion Rate (%)</label>
+                    <input type="text" id="conversion" value="2" inputmode="decimal">
+                </div>
+                <div class="input-group">
+                    <label for="aov">Average Order Value ($)</label>
+                    <input type="text" id="aov" value="2,000" inputmode="numeric">
+                </div>
+            </div>
+
+            <div class="slider-group">
+                <label>
+                    <span>AI Engagement Rate</span>
+                    <span class="slider-value" id="engagementValue">50%</span>
+                </label>
+                <input type="range" id="engagement" min="30" max="85" value="50">
+                <div class="slider-hint">Typical: <strong>50%</strong> · Well-designed implementations: <strong>up to 70%+</strong></div>
+            </div>
+
+            <div class="slider-group">
+                <label>
+                    <span>Conversion Lift for Engaged Users</span>
+                    <span class="slider-value" id="liftValue">50%</span>
+                </label>
+                <input type="range" id="lift" min="30" max="120" value="50">
+                <div class="slider-hint">Baseline: <strong>50%</strong> · Optimized AI assistants: <strong>up to 100%+</strong></div>
+            </div>
+        </div>
+
+        <div class="results-card">
+            <div class="results-grid">
+                <div class="result-item">
+                    <div class="label">Current Monthly Revenue</div>
+                    <div class="value" id="currentRevenue">$0</div>
+                </div>
+                <div class="result-item">
+                    <div class="label">Projected w/ AI Assistant</div>
+                    <div class="value" id="projectedRevenue">$0</div>
+                </div>
+            </div>
+
+            <div class="big-number">
+                <div class="label">You're Leaving on the Table Each Year</div>
+                <div class="value" id="annualOpportunity">$0</div>
+            </div>
+
+            <p class="hook-text" id="hookText">Enter your numbers above to see your opportunity</p>
+        </div>
+
+        <div class="cta-section">
+            <a href="mailto:blake@zapsight.com?subject=Shop%20Pilot%20Demo%20Request&body=Hi%20Blake%2C%0A%0AI%20used%20the%20ROI%20calculator%20and%20I'm%20interested%20in%20learning%20more%20about%20Shop%20Pilot.%0A%0AMy%20details%3A%0A-%20Company%3A%20%0A-%20Monthly%20visitors%3A%20%0A-%20Phone%3A%20%0A%0ALooking%20forward%20to%20connecting." class="cta-button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+                See Shop Pilot in Action
+            </a>
+            <a href="/" class="secondary-button">Learn More</a>
+        </div>
+
+        <div class="assumptions">
+            <h3>How We Calculate This</h3>
+            <ul>
+                <li><strong>AI Engagement Rate (50-70%):</strong> Well-designed chatbots see 80-90% response rates vs. 35-40% for basic implementations. <em>(Matthew Barby, Chatbot Marketing Research)</em></li>
+                <li><strong>Conversion Lift (50-100%+):</strong> Shoppers who engage with AI convert at 12.3% vs 3.1% for non-engaged — a 4X increase. <em>(Rep AI 2025 eCommerce Shopper Behavior Report, 17M sessions analyzed)</em></li>
+                <li><strong>Industry validation:</strong> Leading retailers like Amazon, Wayfair, and Walmart report significant conversion improvements from AI-assisted shopping experiences.</li>
+            </ul>
+        </div>
+
+        <footer>
+            <p>Powered by <a href="https://zapsight.us">ZapSight</a> — AI for Furniture Retail</p>
+        </footer>
+    </div>
+
+    <script>
+        // Format number with commas
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Parse number from formatted string
+        function parseNumber(str) {
+            return parseFloat(str.replace(/[^0-9.]/g, '')) || 0;
+        }
+
+        // Format as currency
+        function formatCurrency(num) {
+            if (num >= 1000000) {
+                return '$' + (num / 1000000).toFixed(1) + 'M';
+            }
+            return '$' + formatNumber(Math.round(num));
+        }
+
+        // Get elements
+        const visitorsInput = document.getElementById('visitors');
+        const conversionInput = document.getElementById('conversion');
+        const aovInput = document.getElementById('aov');
+        const engagementSlider = document.getElementById('engagement');
+        const liftSlider = document.getElementById('lift');
+        const engagementValue = document.getElementById('engagementValue');
+        const liftValue = document.getElementById('liftValue');
+        const currentRevenue = document.getElementById('currentRevenue');
+        const projectedRevenue = document.getElementById('projectedRevenue');
+        const annualOpportunity = document.getElementById('annualOpportunity');
+        const hookText = document.getElementById('hookText');
+
+        // Calculate and update results
+        function calculate() {
+            const visitors = parseNumber(visitorsInput.value);
+            const conversion = parseNumber(conversionInput.value) / 100;
+            const aov = parseNumber(aovInput.value);
+            const engagement = engagementSlider.value / 100;
+            const lift = liftSlider.value / 100;
+
+            // Update slider labels
+            engagementValue.textContent = engagementSlider.value + '%';
+            liftValue.textContent = liftSlider.value + '%';
+
+            if (visitors > 0 && conversion > 0 && aov > 0) {
+                // Current revenue
+                const currentSales = visitors * conversion;
+                const currentRev = currentSales * aov;
+
+                // With AI assistant
+                const engagedVisitors = visitors * engagement;
+                const nonEngagedVisitors = visitors * (1 - engagement);
+                
+                // Engaged users convert at lifted rate
+                const engagedConversion = conversion * (1 + lift);
+                const engagedSales = engagedVisitors * engagedConversion;
+                
+                // Non-engaged users convert at normal rate
+                const nonEngagedSales = nonEngagedVisitors * conversion;
+                
+                const totalSales = engagedSales + nonEngagedSales;
+                const projectedRev = totalSales * aov;
+
+                const monthlyLift = projectedRev - currentRev;
+                const annualLift = monthlyLift * 12;
+
+                // Update display
+                currentRevenue.textContent = formatCurrency(currentRev);
+                projectedRevenue.textContent = formatCurrency(projectedRev);
+                annualOpportunity.textContent = formatCurrency(annualLift);
+
+                if (annualLift > 0) {
+                    hookText.textContent = `That's ${formatCurrency(monthlyLift)} in additional revenue every month.`;
+                } else {
+                    hookText.textContent = 'Enter your numbers above to see your opportunity';
+                }
+            } else {
+                currentRevenue.textContent = '$0';
+                projectedRevenue.textContent = '$0';
+                annualOpportunity.textContent = '$0';
+                hookText.textContent = 'Enter your numbers above to see your opportunity';
+            }
+        }
+
+        // Format inputs on blur
+        function formatInput(input, isCurrency = false) {
+            input.addEventListener('blur', function() {
+                const num = parseNumber(this.value);
+                if (num > 0) {
+                    this.value = isCurrency ? formatNumber(num) : num;
+                }
+            });
+        }
+
+        formatInput(visitorsInput);
+        formatInput(aovInput, true);
+
+        // Add event listeners
+        visitorsInput.addEventListener('input', calculate);
+        conversionInput.addEventListener('input', calculate);
+        aovInput.addEventListener('input', calculate);
+        engagementSlider.addEventListener('input', calculate);
+        liftSlider.addEventListener('input', calculate);
+
+        // Initial calculation
+        calculate();
+    </script>
+</body>
+</html>
