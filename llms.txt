@@ -1,0 +1,45 @@
+# ZapSight US
+
+> AI-powered retail intelligence for furniture retailers. Shop Pilot is our flagship product — an AI sales assistant that lives on retailers' websites and turns static catalogs into guided shopping experiences.
+
+## Company
+
+ZapSight helps furniture retailers sell more with AI. Our primary product, Shop Pilot, is an AI sales assistant that engages website visitors, asks clarifying questions, recommends products, educates shoppers, and drives conversions — all within the retailer's own site.
+
+Key stats:
+- 67% of shoppers trust a retailer's own AI over third-party tools
+- Shop Pilot handles the full customer journey: greeting → discovery → education → recommendation → checkout
+- Remembers returning customers and gets smarter over time
+- Integrates with existing ERP, POS, and ecommerce platforms
+
+Secondary capabilities include AI-powered data warehousing, executive dashboards, RSA performance tracking, delivery alerts, and natural-language business intelligence.
+
+## Pages
+
+- [Home](https://zapsight.us): Main landing page — Shop Pilot demo, before/after comparisons, product overview, team
+- [AI Readiness Audit](https://zapsight.us/audit): Free assessment tool for furniture retailers to evaluate their AI readiness
+- [Blog](https://zapsight.us/blog): Articles on AI in furniture retail, conversion optimization, digital transformation
+
+## Blog Posts
+
+- [Why Regional Furniture Retailers Win Big With AI in 2026](https://zapsight.us/blog/2026-03-16-ai-for-regional-furniture-retailers)
+- [How AI Reduces Furniture Sales Associate Turnover](https://zapsight.us/blog/2026-03-18-reduce-furniture-sales-associate-turnover-with-ai)
+- [Furniture Retail AI Trends 2026: What's Actually Working](https://zapsight.us/blog/2026-03-20-furniture-retail-ai-trends-2026)
+- [How to Increase Furniture Store Website Conversions in 2026](https://zapsight.us/blog/2026-03-22-how-to-increase-furniture-store-website-conversions)
+- [What Is an AI Shopping Assistant for Furniture Stores?](https://zapsight.us/blog/2026-03-23-ai-shopping-assistant-furniture-store)
+- [How Furniture Stores Can Generate More Leads with AI](https://zapsight.us/blog/2026-03-25-furniture-store-lead-generation-ai)
+- [Furniture Store Digital Transformation: A 2026 Roadmap](https://zapsight.us/blog/2026-03-27-furniture-store-digital-transformation)
+- [Bridging the Gap: AI and the Furniture Customer Journey from Screen to Showroom](https://zapsight.us/blog/2026-03-29-furniture-customer-journey-online-to-in-store-2026)
+- [The Furniture Ecommerce Conversion Gap: Why Your Site Converts at 1.4%](https://zapsight.us/blog/2026-03-30-furniture-ecommerce-conversion-gap)
+- [AI Shopping Assistant for Furniture Stores: The Complete Guide](https://zapsight.us/blog/ai-shopping-assistant-furniture-stores)
+- [The Furniture Customer Journey: Why the Sale Starts Online and Ends In-Store](https://zapsight.us/blog/furniture-customer-journey-online-to-in-store)
+- [Why 73% of Furniture Shoppers Leave Without Buying (And How AI Fixes It)](https://zapsight.us/blog/furniture-store-conversion-rate)
+- [Why Your Furniture Store's Ecommerce Conversion Rate Is So Low](https://zapsight.us/blog/furniture-store-ecommerce-conversion-rate)
+- [What Top Furniture Retailers Are Doing Before High Point Market 2026](https://zapsight.us/blog/high-point-market-2026)
+- [The Hidden Cost of Slow RSA Evaluation in Furniture Retail](https://zapsight.us/blog/rsa-evaluation-hidden-cost)
+
+## Contact
+
+Blake Austin — Director of Sales, North America
+Email: blake@zapsight.com
+Calendly: https://calendly.com/blake-zapsight/30min
