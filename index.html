@@ -25,28 +25,11 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="preload" as="image" href="/store-nice.webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        'zap-orange': '#ff6b35',
-                        'zap-coral': '#f7931e',
-                        'zap-pink': '#ff3d7f',
-                        'zap-dark': '#0a0a0a',
-                        'zap-gray': '#1a1a1a',
-                    }
-                }
-            }
-        }
-    </script>
     <style>
         * {
             margin: 0;
@@ -464,8 +447,8 @@
                         
                         <!-- Tab 1: Floor Intelligence Slider -->
                         <div id="slider1" class="comparison-slider mx-auto mb-8" style="display: none;">
-                            <img src="store-nice.jpg" alt="Furniture store showroom" class="comparison-before">
-                            <img src="store-nice.jpg" alt="Furniture store with ZapSight" class="comparison-after" id="afterImage1">
+                            <img src="store-nice.webp" alt="Furniture store showroom" class="comparison-before">
+                            <img src="store-nice.webp" alt="Furniture store with ZapSight" class="comparison-after" id="afterImage1">
                             
                             <!-- Data Overlay -->
                             <div class="data-overlay" id="dataOverlay1">
@@ -508,8 +491,8 @@
                         
                         <!-- Tab 2: Ask Anything Slider -->
                         <div id="slider2" class="comparison-slider mx-auto mb-8" style="display: none;">
-                            <img src="ceo-before.jpg" alt="CEO struggling with data" class="comparison-before">
-                            <img src="ceo-after.jpg" alt="CEO using ZapSight voice query" class="comparison-after" id="afterImage2">
+                            <img src="ceo-before.webp" loading="lazy" alt="CEO struggling with data" class="comparison-before">
+                            <img src="ceo-after.webp" loading="lazy" alt="CEO using ZapSight voice query" class="comparison-after" id="afterImage2">
                             
                             <!-- Voice Query Overlay (shows on after side) -->
                             <div class="data-overlay" id="dataOverlay2">
@@ -534,7 +517,7 @@
                         <!-- Tab 3: Shop Pilot -->
                         <div id="slider3" class="mx-auto mb-8" style="max-width: 800px;">
                             <div class="relative rounded-2xl overflow-hidden border border-white/10">
-                                <img src="shop-pilot-demo.jpg" alt="Shop Pilot AI Sales Assistant" class="w-full">
+                                <img src="shop-pilot-demo.webp" loading="lazy" alt="Shop Pilot AI Sales Assistant" class="w-full">
                                 <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
                                     <span class="px-4 py-2 bg-black/70 backdrop-blur-sm rounded-full text-sm font-semibold text-white">
                                         🛒 AI Sales Assistant
@@ -710,7 +693,7 @@
                         <div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
                             <!-- Photo -->
                             <div class="flex-shrink-0">
-                                <img src="blake-headshot.jpg" alt="Blake Austin" class="w-28 h-28 md:w-36 md:h-36 rounded-2xl object-cover border border-white/10 shadow-lg shadow-orange-500/20">
+                                <img src="blake-headshot.jpg" loading="lazy" alt="Blake Austin" class="w-28 h-28 md:w-36 md:h-36 rounded-2xl object-cover border border-white/10 shadow-lg shadow-orange-500/20">
                             </div>
                             <!-- Bio -->
                             <div class="text-center md:text-left">
