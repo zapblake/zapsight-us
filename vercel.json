@@ -1,4 +1,14 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/pointy",
+      "destination": "https://zapsight-market-planner.vercel.app/pointy"
+    },
+    {
+      "source": "/pointy/:path*",
+      "destination": "https://zapsight-market-planner.vercel.app/pointy/:path*"
+    }
+  ]
 }
