@@ -54,6 +54,50 @@
         .result-bar {
             background: linear-gradient(90deg, #ff6b35 0%, #ff3d7f 45%, #f7931e 100%);
         }
+        @media print {
+            body {
+                background: #ffffff;
+                color: #0f172a;
+            }
+            nav,
+            #how-it-works,
+            #formActions,
+            #leadCapture,
+            #shareMessage,
+            #downloadSummaryButton,
+            #printSummaryButton,
+            #shareSummaryButton,
+            .hero-grid > div > div:first-child,
+            .absolute,
+            .glass-card:not(#summaryCard):not(#resultPanel) {
+                display: none !important;
+            }
+            #estimator {
+                padding: 0 !important;
+            }
+            #estimator > div {
+                display: block !important;
+                max-width: 100% !important;
+            }
+            #resultPanel,
+            #summaryCard {
+                display: block !important;
+                background: #ffffff !important;
+                color: #0f172a !important;
+                border: 1px solid #e2e8f0 !important;
+                box-shadow: none !important;
+                margin-top: 0 !important;
+            }
+            #resultPanel *,
+            #summaryCard * {
+                color: inherit !important;
+                border-color: #e2e8f0 !important;
+            }
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+        }
     </style>
 </head>
 <body>
@@ -237,9 +281,83 @@
                                 </div>
                                 <div class="grid sm:grid-cols-2 gap-4">
                                     <button type="button" id="downloadSummaryButton" class="gradient-bg text-white font-semibold px-5 py-3 rounded-xl hover:opacity-90 transition-opacity">Download Summary</button>
-                                    <button type="button" id="shareSummaryButton" class="soft-border text-white font-semibold px-5 py-3 rounded-xl hover:bg-white/5 transition-colors">Share This Planner</button>
+                                    <button type="button" id="printSummaryButton" class="soft-border text-white font-semibold px-5 py-3 rounded-xl hover:bg-white/5 transition-colors">Print / Save PDF</button>
+                                    <button type="button" id="shareSummaryButton" class="soft-border text-white font-semibold px-5 py-3 rounded-xl hover:bg-white/5 transition-colors sm:col-span-2">Share This Planner</button>
                                 </div>
                                 <div id="shareMessage" class="hidden rounded-2xl px-4 py-3 text-sm"></div>
+                            </div>
+
+                            <div id="summaryCard" class="hidden rounded-3xl border border-white/10 bg-slate-950/60 p-6 space-y-6">
+                                <div class="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
+                                    <div>
+                                        <div class="text-sm uppercase tracking-[0.2em] text-orange-300 font-semibold">Executive summary</div>
+                                        <h3 class="text-2xl font-bold text-white mt-2">Tariff Recovery Snapshot</h3>
+                                        <p class="text-slate-400 mt-2">Prepared for internal review and decision-making.</p>
+                                    </div>
+                                    <div class="rounded-2xl bg-white/5 px-4 py-3 text-sm text-slate-300">
+                                        <div class="text-slate-400">Prepared by</div>
+                                        <div class="font-semibold text-white">ZapSight Tariff Recovery Planner</div>
+                                    </div>
+                                </div>
+
+                                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                                    <div class="rounded-2xl bg-white/5 p-4">
+                                        <div class="text-sm text-slate-400 mb-1">Recovery range</div>
+                                        <div id="summaryRange" class="text-xl font-semibold text-white"></div>
+                                    </div>
+                                    <div class="rounded-2xl bg-white/5 p-4">
+                                        <div class="text-sm text-slate-400 mb-1">Eligibility</div>
+                                        <div id="summaryEligibility" class="text-xl font-semibold text-white"></div>
+                                    </div>
+                                    <div class="rounded-2xl bg-white/5 p-4">
+                                        <div class="text-sm text-slate-400 mb-1">Confidence</div>
+                                        <div id="summaryConfidence" class="text-xl font-semibold text-white"></div>
+                                    </div>
+                                    <div class="rounded-2xl bg-white/5 p-4">
+                                        <div class="text-sm text-slate-400 mb-1">Opportunity tier</div>
+                                        <div id="summaryOpportunityTier" class="text-xl font-semibold text-white"></div>
+                                    </div>
+                                </div>
+
+                                <div class="grid lg:grid-cols-[1.2fr_0.8fr] gap-4">
+                                    <div class="rounded-2xl bg-white/5 p-5 space-y-3">
+                                        <div class="text-sm uppercase tracking-[0.18em] text-slate-400 font-semibold">Executive takeaway</div>
+                                        <p id="summaryExecutiveTakeaway" class="text-white leading-relaxed"></p>
+                                        <div class="border-t border-white/10 pt-3">
+                                            <div class="text-sm text-slate-400 mb-1">Recommended next step</div>
+                                            <p id="summaryNextStep" class="text-slate-200 leading-relaxed"></p>
+                                        </div>
+                                    </div>
+                                    <div class="rounded-2xl bg-white/5 p-5 space-y-3">
+                                        <div>
+                                            <div class="text-sm text-slate-400 mb-1">Readiness score</div>
+                                            <div id="summaryReadiness" class="text-2xl font-semibold text-white"></div>
+                                        </div>
+                                        <div>
+                                            <div class="text-sm text-slate-400 mb-1">Estimated entries in scope</div>
+                                            <div id="summaryEntries" class="text-xl font-semibold text-white"></div>
+                                        </div>
+                                        <div>
+                                            <div class="text-sm text-slate-400 mb-1">Primary blocker</div>
+                                            <p id="summaryBlocker" class="text-slate-200 leading-relaxed"></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid lg:grid-cols-2 gap-4">
+                                    <div class="rounded-2xl bg-white/5 p-5">
+                                        <div class="text-sm uppercase tracking-[0.18em] text-slate-400 font-semibold mb-3">Why this estimate looks this way</div>
+                                        <p id="summaryExplanation" class="text-slate-200 leading-relaxed"></p>
+                                    </div>
+                                    <div class="rounded-2xl bg-white/5 p-5">
+                                        <div class="text-sm uppercase tracking-[0.18em] text-slate-400 font-semibold mb-3">Scenario inputs</div>
+                                        <div id="summaryInputs" class="space-y-2 text-sm text-slate-200"></div>
+                                    </div>
+                                </div>
+
+                                <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-sm text-slate-400">
+                                    Decision-support only. Not legal advice. Final filing decisions should be reviewed with the appropriate broker, trade advisor, or internal team.
+                                </div>
                             </div>
 
                             <div id="leadCapture" class="hidden space-y-5 border-t border-white/10 pt-6">
@@ -453,8 +571,10 @@
         const submitLeadButton = document.getElementById('submitLeadButton');
         const submitMessage = document.getElementById('submitMessage');
         const downloadSummaryButton = document.getElementById('downloadSummaryButton');
+        const printSummaryButton = document.getElementById('printSummaryButton');
         const shareSummaryButton = document.getElementById('shareSummaryButton');
         const shareMessage = document.getElementById('shareMessage');
+        const summaryCard = document.getElementById('summaryCard');
 
         function bindInputs() {
             stepContent.querySelectorAll('[data-field]').forEach((el) => {
@@ -633,41 +753,129 @@
             });
         }
 
-        function getSummaryText() {
+        function formatChoice(value, type) {
+            const maps = {
+                audience: {
+                    company: 'My company',
+                    client: 'A client',
+                    exploring: 'Exploring relevance'
+                },
+                importsDirectly: {
+                    yes: 'Yes',
+                    no: 'No',
+                    unsure: 'Not sure'
+                },
+                iorConfidence: {
+                    high: 'High confidence',
+                    medium: 'Somewhat confident',
+                    low: 'Not sure'
+                },
+                entryVolume: {
+                    small: 'Under 250 entries',
+                    medium: '250 to 2,000 entries',
+                    large: '2,000+ entries'
+                },
+                brokerCount: {
+                    one: 'One broker',
+                    few: 'Two to three brokers',
+                    many: 'Several brokers or mixed sources'
+                },
+                importSpend: {
+                    under5: 'Under $5M',
+                    '5to25': '$5M to $25M',
+                    '25plus': '$25M+'
+                },
+                dutyExposure: {
+                    limited: 'Limited or unclear',
+                    moderate: 'Moderate',
+                    high: 'High or material'
+                },
+                dataAvailability: {
+                    yes: 'Yes',
+                    partial: 'Partially',
+                    no: 'No'
+                },
+                estimateMode: {
+                    quick: 'Quick estimate',
+                    upload: 'Upload-assisted estimate'
+                }
+            };
+            return maps[type]?.[value] || value || 'Not specified';
+        }
+
+        function getExecutiveTakeaway(result) {
+            if (result.eligibility === 'Likely eligible' && result.opportunityTier === 'Significant') {
+                return `This appears to be a high-value tariff recovery opportunity with enough scale to justify immediate executive attention and a structured review.`;
+            }
+            if (result.eligibility === 'Likely eligible' || result.opportunityTier === 'Material') {
+                return `This looks material enough to warrant a focused validation effort, especially if broker exports or ACE data can be assembled quickly.`;
+            }
+            if (result.eligibility === 'Lower likelihood') {
+                return `This does not yet look like a clean recovery path, but the claimant structure should be verified before the opportunity is ruled out.`;
+            }
+            return `There may be recoverable value here, but the decision should hinge on clarifying claimant ownership and assembling cleaner source data.`;
+        }
+
+        function getSummaryData() {
             const result = calculateEstimate();
-            const audienceLabel = formData.audience === 'client'
-                ? 'A client'
-                : formData.audience === 'exploring'
-                    ? 'An exploratory opportunity'
-                    : 'My company';
+            return {
+                result,
+                executiveTakeaway: getExecutiveTakeaway(result),
+                inputs: [
+                    ['Audience', formatChoice(formData.audience, 'audience')],
+                    ['Imports directly', formatChoice(formData.importsDirectly, 'importsDirectly')],
+                    ['Importer of record confidence', formatChoice(formData.iorConfidence, 'iorConfidence')],
+                    ['Entry volume', formatChoice(formData.entryVolume, 'entryVolume')],
+                    ['Broker count', formatChoice(formData.brokerCount, 'brokerCount')],
+                    ['Import spend', formatChoice(formData.importSpend, 'importSpend')],
+                    ['Duty exposure', formatChoice(formData.dutyExposure, 'dutyExposure')],
+                    ['Data availability', formatChoice(formData.dataAvailability, 'dataAvailability')],
+                    ['Estimate mode', formatChoice(formData.estimateMode, 'estimateMode')],
+                    ['Priority', formData.priority || 'Not specified']
+                ]
+            };
+        }
+
+        function renderExecutiveSummary() {
+            const summary = getSummaryData();
+            document.getElementById('summaryRange').textContent = summary.result.range;
+            document.getElementById('summaryEligibility').textContent = summary.result.eligibility;
+            document.getElementById('summaryConfidence').textContent = summary.result.confidence;
+            document.getElementById('summaryOpportunityTier').textContent = summary.result.opportunityTier;
+            document.getElementById('summaryExecutiveTakeaway').textContent = summary.executiveTakeaway;
+            document.getElementById('summaryNextStep').textContent = summary.result.nextStep;
+            document.getElementById('summaryReadiness').textContent = summary.result.readiness;
+            document.getElementById('summaryEntries').textContent = summary.result.entries;
+            document.getElementById('summaryBlocker').textContent = summary.result.blocker;
+            document.getElementById('summaryExplanation').textContent = summary.result.explanation;
+            document.getElementById('summaryInputs').innerHTML = summary.inputs
+                .map(([label, value]) => `<div class="flex items-start justify-between gap-4 border-b border-white/5 pb-2"><div class="text-slate-400">${label}</div><div class="text-right text-white">${value}</div></div>`)
+                .join('');
+        }
+
+        function getSummaryText() {
+            const summary = getSummaryData();
 
             return [
-                'Tariff Recovery Planner Summary',
-                'Generated by ZapSight',
+                'Tariff Recovery Planner Executive Summary',
+                'Prepared by ZapSight',
                 '',
-                `Estimated recovery range: ${result.range}`,
-                `Eligibility view: ${result.eligibility}`,
-                `Confidence: ${result.confidence}`,
-                `Opportunity tier: ${result.opportunityTier}`,
-                `Readiness score: ${result.readiness}`,
-                `Estimated entries in scope: ${result.entries}`,
-                `Biggest blocker: ${result.blocker}`,
-                `Recommended next step: ${result.nextStep}`,
+                `Executive takeaway: ${summary.executiveTakeaway}`,
+                '',
+                `Estimated recovery range: ${summary.result.range}`,
+                `Eligibility view: ${summary.result.eligibility}`,
+                `Confidence: ${summary.result.confidence}`,
+                `Opportunity tier: ${summary.result.opportunityTier}`,
+                `Readiness score: ${summary.result.readiness}`,
+                `Estimated entries in scope: ${summary.result.entries}`,
+                `Primary blocker: ${summary.result.blocker}`,
+                `Recommended next step: ${summary.result.nextStep}`,
                 '',
                 'What is driving the estimate',
-                result.explanation,
+                summary.result.explanation,
                 '',
-                'Qualification inputs',
-                `Audience: ${audienceLabel}`,
-                `Imports directly: ${formData.importsDirectly}`,
-                `Importer of record confidence: ${formData.iorConfidence}`,
-                `Entry volume: ${formData.entryVolume}`,
-                `Broker count: ${formData.brokerCount}`,
-                `Import spend: ${formData.importSpend}`,
-                `Duty exposure: ${formData.dutyExposure}`,
-                `Data availability: ${formData.dataAvailability}`,
-                `Estimate mode: ${formData.estimateMode}`,
-                `Priority: ${formData.priority || 'Not specified'}`,
+                'Scenario inputs',
+                ...summary.inputs.map(([label, value]) => `${label}: ${value}`),
                 '',
                 `Share this planner: ${getShareUrl()}`,
                 '',
@@ -682,11 +890,15 @@
             const a = document.createElement('a');
             const date = new Date().toISOString().slice(0, 10);
             a.href = url;
-            a.download = `tariff-recovery-summary-${date}.txt`;
+            a.download = `tariff-recovery-executive-summary-${date}.txt`;
             document.body.appendChild(a);
             a.click();
             a.remove();
             URL.revokeObjectURL(url);
+        }
+
+        function printSummary() {
+            window.print();
         }
 
         async function sharePlanner() {
@@ -734,6 +946,7 @@
             document.getElementById('resultBlocker').textContent = result.blocker;
             document.getElementById('resultNextStep').textContent = result.nextStep;
             document.getElementById('resultExplanation').textContent = `${result.explanation} Opportunity tier: ${result.opportunityTier}.`;
+            renderExecutiveSummary();
         }
 
         function renderStep() {
@@ -750,6 +963,7 @@
                 stepContent.innerHTML = step.render(formData);
                 resultPanel.classList.add('hidden');
                 leadCapture.classList.add('hidden');
+                summaryCard.classList.add('hidden');
                 nextButton.textContent = currentStep === steps.length - 2 ? 'Generate Snapshot' : 'Continue';
                 nextButton.classList.remove('hidden');
                 bindInputs();
@@ -758,6 +972,7 @@
                 renderResults();
                 resultPanel.classList.remove('hidden');
                 leadCapture.classList.remove('hidden');
+                summaryCard.classList.remove('hidden');
                 nextButton.classList.add('hidden');
             }
         }
@@ -841,6 +1056,10 @@
 
         if (downloadSummaryButton) {
             downloadSummaryButton.addEventListener('click', downloadSummary);
+        }
+
+        if (printSummaryButton) {
+            printSummaryButton.addEventListener('click', printSummary);
         }
 
         if (shareSummaryButton) {
