@@ -242,23 +242,29 @@
                                 <div class="grid md:grid-cols-2 gap-5">
                                     <div>
                                         <label class="block text-sm font-medium text-slate-300 mb-2">Name</label>
-                                        <input type="text" class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-400" placeholder="Jane Smith">
+                                        <input id="leadName" type="text" class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-400" placeholder="Jane Smith">
                                     </div>
                                     <div>
                                         <label class="block text-sm font-medium text-slate-300 mb-2">Company</label>
-                                        <input type="text" class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-400" placeholder="Acme Furniture">
+                                        <input id="leadCompany" type="text" class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-400" placeholder="Acme Furniture">
                                     </div>
                                     <div>
                                         <label class="block text-sm font-medium text-slate-300 mb-2">Email</label>
-                                        <input type="email" class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-400" placeholder="you@company.com">
+                                        <input id="leadEmail" type="email" class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-400" placeholder="you@company.com">
                                     </div>
                                     <div>
                                         <label class="block text-sm font-medium text-slate-300 mb-2">Role</label>
-                                        <input type="text" class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-400" placeholder="CFO, Controller, VP Operations">
+                                        <input id="leadRole" type="text" class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-400" placeholder="CFO, Controller, VP Operations">
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label class="block text-sm font-medium text-slate-300 mb-2">Phone (optional)</label>
+                                        <input id="leadPhone" type="text" class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-400" placeholder="(555) 555-5555">
                                     </div>
                                 </div>
+                                <div id="submitMessage" class="hidden rounded-2xl px-4 py-3 text-sm"></div>
                                 <div class="flex flex-col sm:flex-row gap-4">
-                                    <a href="https://calendly.com/blake-zapsight/30min" target="_blank" class="gradient-bg text-white font-semibold px-6 py-3.5 rounded-xl text-center hover:opacity-90 transition-opacity">Book Detailed Review</a>
+                                    <button type="button" id="submitLeadButton" class="gradient-bg text-white font-semibold px-6 py-3.5 rounded-xl text-center hover:opacity-90 transition-opacity">Request Detailed Review</button>
+                                    <a href="https://calendly.com/blake-zapsight/30min" target="_blank" class="soft-border text-white font-semibold px-6 py-3.5 rounded-xl text-center hover:bg-white/5 transition-colors">Book a Call Instead</a>
                                     <button type="button" id="restartButton" class="soft-border text-white font-semibold px-6 py-3.5 rounded-xl hover:bg-white/5 transition-colors">Run Another Estimate</button>
                                 </div>
                             </div>
@@ -288,10 +294,6 @@
                                 <li><span class="text-white font-semibold">Biggest blockers</span><br>Know what is missing before anyone starts a manual data drill.</li>
                                 <li><span class="text-white font-semibold">Recommended next step</span><br>Move into a data-backed review, broker follow-up, or internal working session.</li>
                             </ul>
-                        </div>
-                        <div class="rounded-2xl border border-orange-400/20 bg-orange-500/10 p-6">
-                            <div class="text-lg font-semibold mb-2">Best first CTA</div>
-                            <p class="text-slate-200 leading-relaxed">For now, this page should route interested companies into a detailed review conversation. Once we wire the real app, this section can become the actual results and lead-capture handoff.</p>
                         </div>
                     </div>
                 </div>
@@ -420,6 +422,8 @@
         const backButton = document.getElementById('backButton');
         const nextButton = document.getElementById('nextButton');
         const restartButton = document.getElementById('restartButton');
+        const submitLeadButton = document.getElementById('submitLeadButton');
+        const submitMessage = document.getElementById('submitMessage');
 
         function bindInputs() {
             stepContent.querySelectorAll('[data-field]').forEach((el) => {
@@ -546,11 +550,71 @@
             }
         });
 
+        async function submitLead() {
+            const payload = {
+                name: document.getElementById('leadName').value.trim(),
+                company: document.getElementById('leadCompany').value.trim(),
+                email: document.getElementById('leadEmail').value.trim(),
+                role: document.getElementById('leadRole').value.trim(),
+                phone: document.getElementById('leadPhone').value.trim(),
+                estimate: {
+                    ...calculateEstimate(),
+                    mode: formData.estimateMode,
+                    priority: formData.priority || ''
+                },
+                qualification: { ...formData }
+            };
+
+            if (!payload.name || !payload.company || !payload.email || !payload.role) {
+                submitMessage.className = 'rounded-2xl px-4 py-3 text-sm bg-red-500/10 border border-red-400/20 text-red-200';
+                submitMessage.textContent = 'Please complete name, company, email, and role so we know where to send the follow-up.';
+                submitMessage.classList.remove('hidden');
+                return;
+            }
+
+            submitLeadButton.disabled = true;
+            submitLeadButton.textContent = 'Submitting...';
+            submitMessage.className = 'rounded-2xl px-4 py-3 text-sm bg-white/5 border border-white/10 text-slate-200';
+            submitMessage.textContent = 'Submitting your request...';
+            submitMessage.classList.remove('hidden');
+
+            try {
+                const response = await fetch('/api/tarifrecovery/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+
+                if (!response.ok || !result.ok) {
+                    throw new Error(result.error || 'Something went wrong');
+                }
+
+                submitMessage.className = 'rounded-2xl px-4 py-3 text-sm bg-emerald-500/10 border border-emerald-400/20 text-emerald-200';
+                submitMessage.textContent = 'Thanks. Your request was captured successfully. We can follow up from email while the CRM logging gets reconnected.';
+                submitLeadButton.textContent = 'Submitted';
+            } catch (error) {
+                submitLeadButton.disabled = false;
+                submitLeadButton.textContent = 'Request Detailed Review';
+                submitMessage.className = 'rounded-2xl px-4 py-3 text-sm bg-red-500/10 border border-red-400/20 text-red-200';
+                submitMessage.textContent = error.message || 'Something went wrong submitting the form.';
+            }
+        }
+
         restartButton.addEventListener('click', () => {
             currentStep = 0;
+            submitMessage.classList.add('hidden');
+            if (submitLeadButton) {
+                submitLeadButton.disabled = false;
+                submitLeadButton.textContent = 'Request Detailed Review';
+            }
             renderStep();
             window.scrollTo({ top: document.getElementById('estimator').offsetTop - 24, behavior: 'smooth' });
         });
+
+        if (submitLeadButton) {
+            submitLeadButton.addEventListener('click', submitLead);
+        }
 
         renderStep();
     </script>
