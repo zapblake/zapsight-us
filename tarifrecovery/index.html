@@ -191,58 +191,81 @@
             <section id="estimator" class="px-6 pb-24">
                 <div class="max-w-6xl mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-start">
                     <div class="glass-card rounded-3xl p-6 md:p-8">
-                        <div class="text-sm font-semibold uppercase tracking-[0.2em] text-orange-300 mb-3">Estimator preview</div>
-                        <h2 class="text-3xl font-bold mb-3">Start with a quick qualification check</h2>
-                        <p class="text-slate-300 mb-8 leading-relaxed">This v1 page is the launch pad. We can wire this into a real multi-step app next, but the page should already sell the workflow and create conversations.</p>
+                        <div class="flex items-center justify-between gap-4 mb-3">
+                            <div class="text-sm font-semibold uppercase tracking-[0.2em] text-orange-300">Interactive estimator</div>
+                            <div id="stepBadge" class="text-xs text-slate-400">Step 1 of 4</div>
+                        </div>
+                        <h2 id="stepTitle" class="text-3xl font-bold mb-3">Start with a quick qualification check</h2>
+                        <p id="stepDescription" class="text-slate-300 mb-8 leading-relaxed">Answer a few high-signal questions so Tariff Recovery Planner can give you a directional view of eligibility and opportunity.</p>
 
-                        <form class="space-y-5">
-                            <div>
-                                <label class="block text-sm font-medium text-slate-300 mb-2">Who are you evaluating this for?</label>
-                                <select class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-orange-400">
-                                    <option>My company</option>
-                                    <option>A client</option>
-                                    <option>I’m exploring whether this is relevant</option>
-                                </select>
+                        <form id="estimatorForm" class="space-y-6">
+                            <div class="h-2 w-full rounded-full bg-white/10 overflow-hidden">
+                                <div id="progressBar" class="h-full rounded-full result-bar transition-all duration-300" style="width: 25%"></div>
                             </div>
-                            <div class="grid md:grid-cols-2 gap-5">
+
+                            <div id="stepContent" class="space-y-5"></div>
+
+                            <div id="resultPanel" class="hidden rounded-3xl border border-orange-400/15 bg-orange-500/10 p-5 space-y-4">
                                 <div>
-                                    <label class="block text-sm font-medium text-slate-300 mb-2">Do you import furniture directly?</label>
-                                    <select class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-orange-400">
-                                        <option>Yes</option>
-                                        <option>No</option>
-                                        <option>Not sure</option>
-                                    </select>
+                                    <div class="text-sm text-orange-200 mb-1">Tariff recovery snapshot</div>
+                                    <div id="resultHeadline" class="text-3xl font-bold text-white"></div>
                                 </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-300 mb-2">Importer of record confidence</label>
-                                    <select class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-orange-400">
-                                        <option>High confidence</option>
-                                        <option>Somewhat confident</option>
-                                        <option>Not sure</option>
-                                    </select>
+                                <div class="grid sm:grid-cols-2 gap-4">
+                                    <div class="rounded-2xl bg-white/5 p-4">
+                                        <div class="text-sm text-slate-400 mb-1">Eligibility view</div>
+                                        <div id="resultEligibility" class="text-xl font-semibold text-white"></div>
+                                    </div>
+                                    <div class="rounded-2xl bg-white/5 p-4">
+                                        <div class="text-sm text-slate-400 mb-1">Confidence</div>
+                                        <div id="resultConfidence" class="text-xl font-semibold text-white"></div>
+                                    </div>
+                                    <div class="rounded-2xl bg-white/5 p-4">
+                                        <div class="text-sm text-slate-400 mb-1">Readiness score</div>
+                                        <div id="resultReadiness" class="text-xl font-semibold text-white"></div>
+                                    </div>
+                                    <div class="rounded-2xl bg-white/5 p-4">
+                                        <div class="text-sm text-slate-400 mb-1">Recommended next step</div>
+                                        <div id="resultNextStep" class="text-sm leading-relaxed text-white"></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="grid md:grid-cols-2 gap-5">
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-300 mb-2">Estimated import entries in relevant period</label>
-                                    <input type="text" placeholder="Example: 500 to 2,000" class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-400">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-300 mb-2">Do you have broker exports or ACE data?</label>
-                                    <select class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-orange-400">
-                                        <option>Yes</option>
-                                        <option>No</option>
-                                        <option>Partially</option>
-                                    </select>
+                                <div class="rounded-2xl bg-slate-950/50 p-4">
+                                    <div class="text-sm text-slate-400 mb-2">What is driving this estimate</div>
+                                    <p id="resultExplanation" class="text-slate-200 leading-relaxed"></p>
                                 </div>
                             </div>
-                            <div>
-                                <label class="block text-sm font-medium text-slate-300 mb-2">What would you want to know first?</label>
-                                <textarea rows="4" placeholder="For example: whether the opportunity is large enough to justify internal effort, whether we are likely eligible, or what data we would need from brokers." class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-400"></textarea>
+
+                            <div id="leadCapture" class="hidden space-y-5 border-t border-white/10 pt-6">
+                                <div>
+                                    <div class="text-xl font-semibold text-white mb-2">Get the summary and request a detailed review</div>
+                                    <p class="text-slate-300 leading-relaxed">Capture interested companies while we wire the deeper workflow. For now, this creates the right handoff moment.</p>
+                                </div>
+                                <div class="grid md:grid-cols-2 gap-5">
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-300 mb-2">Name</label>
+                                        <input type="text" class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-400" placeholder="Jane Smith">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-300 mb-2">Company</label>
+                                        <input type="text" class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-400" placeholder="Acme Furniture">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-300 mb-2">Email</label>
+                                        <input type="email" class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-400" placeholder="you@company.com">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-slate-300 mb-2">Role</label>
+                                        <input type="text" class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-400" placeholder="CFO, Controller, VP Operations">
+                                    </div>
+                                </div>
+                                <div class="flex flex-col sm:flex-row gap-4">
+                                    <a href="https://calendly.com/blake-zapsight/30min" target="_blank" class="gradient-bg text-white font-semibold px-6 py-3.5 rounded-xl text-center hover:opacity-90 transition-opacity">Book Detailed Review</a>
+                                    <button type="button" id="restartButton" class="soft-border text-white font-semibold px-6 py-3.5 rounded-xl hover:bg-white/5 transition-colors">Run Another Estimate</button>
+                                </div>
                             </div>
-                            <div class="flex flex-col sm:flex-row gap-4">
-                                <button type="button" class="gradient-bg text-white font-semibold px-6 py-3.5 rounded-xl hover:opacity-90 transition-opacity">Estimate Recovery</button>
-                                <button type="button" class="soft-border text-white font-semibold px-6 py-3.5 rounded-xl hover:bg-white/5 transition-colors">Request Detailed Review</button>
+
+                            <div id="formActions" class="flex flex-col sm:flex-row gap-4">
+                                <button type="button" id="backButton" class="hidden soft-border text-white font-semibold px-6 py-3.5 rounded-xl hover:bg-white/5 transition-colors">Back</button>
+                                <button type="button" id="nextButton" class="gradient-bg text-white font-semibold px-6 py-3.5 rounded-xl hover:opacity-90 transition-opacity">Continue</button>
                             </div>
                         </form>
                     </div>
@@ -275,5 +298,261 @@
             </section>
         </main>
     </div>
+
+    <script>
+        const steps = [
+            {
+                title: 'Start with a quick qualification check',
+                description: 'Answer a few high-signal questions so Tariff Recovery Planner can give you a directional view of eligibility and opportunity.',
+                render: (data) => `
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Who are you evaluating this for?</label>
+                        <select data-field="audience" class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-orange-400">
+                            <option value="company" ${data.audience === 'company' ? 'selected' : ''}>My company</option>
+                            <option value="client" ${data.audience === 'client' ? 'selected' : ''}>A client</option>
+                            <option value="exploring" ${data.audience === 'exploring' ? 'selected' : ''}>I’m exploring whether this is relevant</option>
+                        </select>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Does the business import furniture directly?</label>
+                            <select data-field="importsDirectly" class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-orange-400">
+                                <option value="yes" ${data.importsDirectly === 'yes' ? 'selected' : ''}>Yes</option>
+                                <option value="no" ${data.importsDirectly === 'no' ? 'selected' : ''}>No</option>
+                                <option value="unsure" ${data.importsDirectly === 'unsure' ? 'selected' : ''}>Not sure</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Importer of record confidence</label>
+                            <select data-field="iorConfidence" class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-orange-400">
+                                <option value="high" ${data.iorConfidence === 'high' ? 'selected' : ''}>High confidence</option>
+                                <option value="medium" ${data.iorConfidence === 'medium' ? 'selected' : ''}>Somewhat confident</option>
+                                <option value="low" ${data.iorConfidence === 'low' ? 'selected' : ''}>Not sure</option>
+                            </select>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                title: 'Size the opportunity',
+                description: 'Give a few directional details about import complexity and data availability.',
+                render: (data) => `
+                    <div class="grid md:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Estimated entry volume</label>
+                            <select data-field="entryVolume" class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-orange-400">
+                                <option value="small" ${data.entryVolume === 'small' ? 'selected' : ''}>Under 250 entries</option>
+                                <option value="medium" ${data.entryVolume === 'medium' ? 'selected' : ''}>250 to 2,000 entries</option>
+                                <option value="large" ${data.entryVolume === 'large' ? 'selected' : ''}>2,000+ entries</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">How many brokers were involved?</label>
+                            <select data-field="brokerCount" class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-orange-400">
+                                <option value="one" ${data.brokerCount === 'one' ? 'selected' : ''}>One broker</option>
+                                <option value="few" ${data.brokerCount === 'few' ? 'selected' : ''}>Two to three brokers</option>
+                                <option value="many" ${data.brokerCount === 'many' ? 'selected' : ''}>Several brokers or mixed sources</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Do you already have broker exports, ACE data, or structured spreadsheets?</label>
+                        <select data-field="dataAvailability" class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-orange-400">
+                            <option value="yes" ${data.dataAvailability === 'yes' ? 'selected' : ''}>Yes</option>
+                            <option value="partial" ${data.dataAvailability === 'partial' ? 'selected' : ''}>Partially</option>
+                            <option value="no" ${data.dataAvailability === 'no' ? 'selected' : ''}>No</option>
+                        </select>
+                    </div>
+                `
+            },
+            {
+                title: 'Choose estimate mode',
+                description: 'Select the fastest route for the kind of answer you want right now.',
+                render: (data) => `
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-3">How would you like to estimate the opportunity?</label>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <label class="rounded-2xl border ${data.estimateMode === 'quick' ? 'border-orange-400 bg-orange-500/10' : 'border-white/10 bg-white/5'} p-5 cursor-pointer">
+                                <input type="radio" name="estimateMode" value="quick" class="hidden" ${data.estimateMode === 'quick' ? 'checked' : ''}>
+                                <div class="text-lg font-semibold text-white mb-2">Quick estimate</div>
+                                <div class="text-slate-300 leading-relaxed">Use directional business inputs to generate a fast opportunity range.</div>
+                            </label>
+                            <label class="rounded-2xl border ${data.estimateMode === 'upload' ? 'border-orange-400 bg-orange-500/10' : 'border-white/10 bg-white/5'} p-5 cursor-pointer">
+                                <input type="radio" name="estimateMode" value="upload" class="hidden" ${data.estimateMode === 'upload' ? 'checked' : ''}>
+                                <div class="text-lg font-semibold text-white mb-2">Upload-assisted estimate</div>
+                                <div class="text-slate-300 leading-relaxed">Best when broker exports or ACE data exist and you want a stronger readiness picture.</div>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">What do you most want to know?</label>
+                        <textarea data-field="priority" rows="4" placeholder="For example: whether the opportunity is large enough to justify effort, whether we are likely eligible, or what data we need from brokers." class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-orange-400">${data.priority || ''}</textarea>
+                    </div>
+                `
+            },
+            {
+                title: 'Review your recovery snapshot',
+                description: 'We have enough information to generate a directional estimate and next step.',
+                render: () => ''
+            }
+        ];
+
+        const formData = {
+            audience: 'company',
+            importsDirectly: 'yes',
+            iorConfidence: 'medium',
+            entryVolume: 'medium',
+            brokerCount: 'few',
+            dataAvailability: 'partial',
+            estimateMode: 'quick',
+            priority: ''
+        };
+
+        let currentStep = 0;
+
+        const stepBadge = document.getElementById('stepBadge');
+        const stepTitle = document.getElementById('stepTitle');
+        const stepDescription = document.getElementById('stepDescription');
+        const stepContent = document.getElementById('stepContent');
+        const progressBar = document.getElementById('progressBar');
+        const resultPanel = document.getElementById('resultPanel');
+        const leadCapture = document.getElementById('leadCapture');
+        const backButton = document.getElementById('backButton');
+        const nextButton = document.getElementById('nextButton');
+        const restartButton = document.getElementById('restartButton');
+
+        function bindInputs() {
+            stepContent.querySelectorAll('[data-field]').forEach((el) => {
+                el.addEventListener('input', (event) => {
+                    formData[event.target.dataset.field] = event.target.value;
+                });
+                el.addEventListener('change', (event) => {
+                    formData[event.target.dataset.field] = event.target.value;
+                });
+            });
+
+            stepContent.querySelectorAll('input[name="estimateMode"]').forEach((el) => {
+                el.addEventListener('change', (event) => {
+                    formData.estimateMode = event.target.value;
+                    renderStep();
+                });
+            });
+        }
+
+        function calculateEstimate() {
+            let score = 0;
+            if (formData.importsDirectly === 'yes') score += 30;
+            if (formData.importsDirectly === 'unsure') score += 10;
+
+            if (formData.iorConfidence === 'high') score += 25;
+            if (formData.iorConfidence === 'medium') score += 15;
+
+            if (formData.entryVolume === 'large') score += 25;
+            if (formData.entryVolume === 'medium') score += 18;
+            if (formData.entryVolume === 'small') score += 8;
+
+            if (formData.dataAvailability === 'yes') score += 12;
+            if (formData.dataAvailability === 'partial') score += 6;
+
+            if (formData.brokerCount === 'one') score += 8;
+            if (formData.brokerCount === 'few') score += 5;
+
+            if (formData.estimateMode === 'upload') score += 5;
+
+            const readiness = Math.min(92, Math.max(18, score));
+
+            let eligibility = 'Possibly eligible';
+            let confidence = 'Low';
+            let range = '$40,000 - $90,000';
+            let nextStep = 'Confirm importer-of-record status and gather broker exports before committing more time.';
+            let explanation = 'The current answers suggest there may be some opportunity, but key ownership and source-data questions still need to be tightened.';
+
+            if (score >= 70) {
+                eligibility = 'Likely eligible';
+                confidence = 'Medium to High';
+                range = formData.entryVolume === 'large' ? '$220,000 - $540,000' : '$120,000 - $260,000';
+                nextStep = formData.dataAvailability === 'yes'
+                    ? 'Move into a detailed review and reconcile broker exports to validate a claim-ready path.'
+                    : 'Confirm source files and importer-of-record details so the estimate can move from directional to data-backed.';
+                explanation = 'Direct importing, stronger importer-of-record confidence, and enough entry volume make this look material enough to warrant a detailed review.';
+            } else if (score >= 45) {
+                eligibility = 'Possibly eligible';
+                confidence = 'Medium';
+                range = formData.entryVolume === 'small' ? '$25,000 - $65,000' : '$75,000 - $180,000';
+                nextStep = formData.dataAvailability === 'no'
+                    ? 'Gather ACE or broker-export data first so the opportunity can be sized with more confidence.'
+                    : 'Use available broker data to confirm scope and isolate the biggest blockers.';
+                explanation = 'There are signs of potential recovery value here, but the path still depends on tightening source data and claimant clarity.';
+            }
+
+            if (formData.importsDirectly === 'no') {
+                eligibility = 'Probably not a fit';
+                confidence = 'Low';
+                range = 'Unable to estimate confidently';
+                nextStep = 'Verify whether another entity or broker relationship controls import and duty records.';
+                explanation = 'If the business did not import directly, the recovery path may sit with another entity or require a different claimant structure.';
+            }
+
+            return { eligibility, confidence, range, readiness: `${readiness}%`, nextStep, explanation };
+        }
+
+        function renderResults() {
+            const result = calculateEstimate();
+            document.getElementById('resultHeadline').textContent = result.range;
+            document.getElementById('resultEligibility').textContent = result.eligibility;
+            document.getElementById('resultConfidence').textContent = result.confidence;
+            document.getElementById('resultReadiness').textContent = result.readiness;
+            document.getElementById('resultNextStep').textContent = result.nextStep;
+            document.getElementById('resultExplanation').textContent = result.explanation;
+        }
+
+        function renderStep() {
+            const step = steps[currentStep];
+            const percent = ((currentStep + 1) / steps.length) * 100;
+
+            stepBadge.textContent = `Step ${currentStep + 1} of ${steps.length}`;
+            stepTitle.textContent = step.title;
+            stepDescription.textContent = step.description;
+            progressBar.style.width = `${percent}%`;
+            backButton.classList.toggle('hidden', currentStep === 0);
+
+            if (currentStep < steps.length - 1) {
+                stepContent.innerHTML = step.render(formData);
+                resultPanel.classList.add('hidden');
+                leadCapture.classList.add('hidden');
+                nextButton.textContent = currentStep === steps.length - 2 ? 'Generate Snapshot' : 'Continue';
+                nextButton.classList.remove('hidden');
+                bindInputs();
+            } else {
+                stepContent.innerHTML = '';
+                renderResults();
+                resultPanel.classList.remove('hidden');
+                leadCapture.classList.remove('hidden');
+                nextButton.classList.add('hidden');
+            }
+        }
+
+        backButton.addEventListener('click', () => {
+            if (currentStep > 0) {
+                currentStep -= 1;
+                renderStep();
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (currentStep < steps.length - 1) {
+                currentStep += 1;
+                renderStep();
+            }
+        });
+
+        restartButton.addEventListener('click', () => {
+            currentStep = 0;
+            renderStep();
+            window.scrollTo({ top: document.getElementById('estimator').offsetTop - 24, behavior: 'smooth' });
+        });
+
+        renderStep();
+    </script>
 </body>
 </html>
