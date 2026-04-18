@@ -99,42 +99,37 @@
                     <div class="glass-card rounded-3xl p-6 md:p-8 shadow-2xl shadow-orange-500/10">
                         <div class="flex items-center justify-between mb-6">
                             <div>
-                                <div class="text-sm text-slate-400">Example recovery snapshot</div>
-                                <div class="text-2xl md:text-3xl font-bold text-white mt-1">$185,000 - $260,000</div>
+                                <div class="text-sm text-slate-400">What executives get</div>
+                                <div class="text-2xl md:text-3xl font-bold text-white mt-1">A fast tariff recovery snapshot</div>
                             </div>
-                            <div class="rounded-2xl bg-emerald-500/15 text-emerald-300 text-sm font-medium px-4 py-2">Likely eligible</div>
+                            <div class="rounded-2xl bg-orange-500/15 text-orange-200 text-sm font-medium px-4 py-2">Built for action</div>
                         </div>
 
                         <div class="space-y-5">
-                            <div>
-                                <div class="flex items-center justify-between text-sm text-slate-300 mb-2">
-                                    <span>Confidence</span>
-                                    <span>Medium</span>
-                                </div>
-                                <div class="h-3 w-full rounded-full bg-white/10 overflow-hidden">
-                                    <div class="h-full w-[68%] rounded-full result-bar"></div>
-                                </div>
+                            <div class="rounded-2xl bg-white/5 p-4">
+                                <div class="text-sm text-slate-400 mb-2">In a few minutes, you can walk away with:</div>
+                                <ul class="space-y-3 text-slate-200">
+                                    <li><span class="text-white font-semibold">A likely eligibility view</span> based on importer structure, entry volume, and available records</li>
+                                    <li><span class="text-white font-semibold">A directional recovery range</span> to gauge whether the opportunity is worth internal attention</li>
+                                    <li><span class="text-white font-semibold">A readiness score</span> showing how close the business is to a detailed review</li>
+                                    <li><span class="text-white font-semibold">A concrete next step</span> so the team knows what to do next, not just what to worry about</li>
+                                </ul>
                             </div>
 
                             <div class="grid sm:grid-cols-2 gap-4">
                                 <div class="rounded-2xl bg-white/5 p-4">
-                                    <div class="text-sm text-slate-400 mb-1">Readiness score</div>
-                                    <div class="text-2xl font-bold">63%</div>
+                                    <div class="text-sm text-slate-400 mb-1">Best for</div>
+                                    <div class="text-base font-semibold text-white">Furniture importers, wholesalers, retailers, and brokers</div>
                                 </div>
                                 <div class="rounded-2xl bg-white/5 p-4">
-                                    <div class="text-sm text-slate-400 mb-1">Estimated impacted entries</div>
-                                    <div class="text-2xl font-bold">1,284</div>
+                                    <div class="text-sm text-slate-400 mb-1">Designed to answer</div>
+                                    <div class="text-base font-semibold text-white">Is there enough potential value here to justify the work?</div>
                                 </div>
-                            </div>
-
-                            <div class="rounded-2xl bg-white/5 p-4">
-                                <div class="text-sm text-slate-400 mb-2">Biggest blocker</div>
-                                <div class="text-base text-white leading-relaxed">Importer-of-record confirmation and broker file reconciliation.</div>
                             </div>
 
                             <div class="rounded-2xl bg-orange-500/10 border border-orange-400/15 p-4">
-                                <div class="text-sm text-orange-200 mb-2">Recommended next step</div>
-                                <div class="text-white leading-relaxed">Upload broker exports or request a detailed review to move from directional estimate to claim-ready analysis.</div>
+                                <div class="text-sm text-orange-200 mb-2">Why it matters</div>
+                                <div class="text-white leading-relaxed">Most teams know there may be tariff recovery opportunity, but they do not know if it is real, material, or worth the pain of digging through broker files. This app is built to answer that first.</div>
                             </div>
                         </div>
                     </div>
@@ -337,7 +332,7 @@
             },
             {
                 title: 'Size the opportunity',
-                description: 'Give a few directional details about import complexity and data availability.',
+                description: 'Give a few directional details about import complexity, duty exposure, and data availability.',
                 render: (data) => `
                     <div class="grid md:grid-cols-2 gap-5">
                         <div>
@@ -354,6 +349,24 @@
                                 <option value="one" ${data.brokerCount === 'one' ? 'selected' : ''}>One broker</option>
                                 <option value="few" ${data.brokerCount === 'few' ? 'selected' : ''}>Two to three brokers</option>
                                 <option value="many" ${data.brokerCount === 'many' ? 'selected' : ''}>Several brokers or mixed sources</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-5">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Approximate annual import spend</label>
+                            <select data-field="importSpend" class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-orange-400">
+                                <option value="under5" ${data.importSpend === 'under5' ? 'selected' : ''}>Under $5M</option>
+                                <option value="5to25" ${data.importSpend === '5to25' ? 'selected' : ''}>$5M to $25M</option>
+                                <option value="25plus" ${data.importSpend === '25plus' ? 'selected' : ''}>$25M+</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Approximate tariff / duty exposure</label>
+                            <select data-field="dutyExposure" class="w-full rounded-xl bg-slate-950/80 border border-white/10 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-orange-400">
+                                <option value="limited" ${data.dutyExposure === 'limited' ? 'selected' : ''}>Limited / unclear</option>
+                                <option value="moderate" ${data.dutyExposure === 'moderate' ? 'selected' : ''}>Moderate</option>
+                                <option value="high" ${data.dutyExposure === 'high' ? 'selected' : ''}>High / material</option>
                             </select>
                         </div>
                     </div>
@@ -405,6 +418,8 @@
             iorConfidence: 'medium',
             entryVolume: 'medium',
             brokerCount: 'few',
+            importSpend: '5to25',
+            dutyExposure: 'moderate',
             dataAvailability: 'partial',
             estimateMode: 'quick',
             priority: ''
@@ -445,59 +460,142 @@
 
         function calculateEstimate() {
             let score = 0;
-            if (formData.importsDirectly === 'yes') score += 30;
-            if (formData.importsDirectly === 'unsure') score += 10;
+            let entries = 180;
+            let blocker = 'Need to confirm importer-of-record status and gather source files.';
+            const rationale = [];
 
-            if (formData.iorConfidence === 'high') score += 25;
-            if (formData.iorConfidence === 'medium') score += 15;
-
-            if (formData.entryVolume === 'large') score += 25;
-            if (formData.entryVolume === 'medium') score += 18;
-            if (formData.entryVolume === 'small') score += 8;
-
-            if (formData.dataAvailability === 'yes') score += 12;
-            if (formData.dataAvailability === 'partial') score += 6;
-
-            if (formData.brokerCount === 'one') score += 8;
-            if (formData.brokerCount === 'few') score += 5;
-
-            if (formData.estimateMode === 'upload') score += 5;
-
-            const readiness = Math.min(92, Math.max(18, score));
-
-            let eligibility = 'Possibly eligible';
-            let confidence = 'Low';
-            let range = '$40,000 - $90,000';
-            let nextStep = 'Confirm importer-of-record status and gather broker exports before committing more time.';
-            let explanation = 'The current answers suggest there may be some opportunity, but key ownership and source-data questions still need to be tightened.';
-
-            if (score >= 70) {
-                eligibility = 'Likely eligible';
-                confidence = 'Medium to High';
-                range = formData.entryVolume === 'large' ? '$220,000 - $540,000' : '$120,000 - $260,000';
-                nextStep = formData.dataAvailability === 'yes'
-                    ? 'Move into a detailed review and reconcile broker exports to validate a claim-ready path.'
-                    : 'Confirm source files and importer-of-record details so the estimate can move from directional to data-backed.';
-                explanation = 'Direct importing, stronger importer-of-record confidence, and enough entry volume make this look material enough to warrant a detailed review.';
-            } else if (score >= 45) {
-                eligibility = 'Possibly eligible';
-                confidence = 'Medium';
-                range = formData.entryVolume === 'small' ? '$25,000 - $65,000' : '$75,000 - $180,000';
-                nextStep = formData.dataAvailability === 'no'
-                    ? 'Gather ACE or broker-export data first so the opportunity can be sized with more confidence.'
-                    : 'Use available broker data to confirm scope and isolate the biggest blockers.';
-                explanation = 'There are signs of potential recovery value here, but the path still depends on tightening source data and claimant clarity.';
+            if (formData.importsDirectly === 'yes') {
+                score += 28;
+                rationale.push('the business appears to import directly');
+            } else if (formData.importsDirectly === 'unsure') {
+                score += 10;
+                blocker = 'Direct importer status still needs validation.';
+            } else {
+                score -= 12;
+                blocker = 'If the business does not import directly, the recovery path may sit with another entity.';
             }
 
+            if (formData.iorConfidence === 'high') {
+                score += 22;
+                rationale.push('importer-of-record confidence is strong');
+            } else if (formData.iorConfidence === 'medium') {
+                score += 12;
+            } else {
+                score -= 6;
+                blocker = 'Importer-of-record ownership is still unclear.';
+            }
+
+            if (formData.entryVolume === 'large') {
+                score += 24;
+                entries = 2100;
+                rationale.push('entry volume looks meaningful');
+            } else if (formData.entryVolume === 'medium') {
+                score += 16;
+                entries = 850;
+            } else {
+                score += 6;
+                entries = 140;
+            }
+
+            if (formData.brokerCount === 'one') {
+                score += 8;
+            } else if (formData.brokerCount === 'few') {
+                score += 4;
+            } else {
+                score -= 4;
+                blocker = 'Data may be fragmented across several brokers or entities.';
+                rationale.push('multi-broker complexity may slow execution');
+            }
+
+            if (formData.importSpend === '5to25') {
+                score += 10;
+                rationale.push('annual import spend appears meaningful');
+            } else if (formData.importSpend === '25plus') {
+                score += 18;
+                rationale.push('annual import spend appears large enough to support a material review');
+            }
+
+            if (formData.dutyExposure === 'moderate') {
+                score += 10;
+                rationale.push('duty exposure looks meaningful');
+            } else if (formData.dutyExposure === 'high') {
+                score += 18;
+                rationale.push('duty exposure appears material');
+            } else {
+                score -= 2;
+                blocker = 'Duty exposure is still unclear, so this remains a directional estimate.';
+            }
+
+            if (formData.dataAvailability === 'yes') {
+                score += 18;
+                rationale.push('data readiness is stronger than average');
+            } else if (formData.dataAvailability === 'partial') {
+                score += 8;
+            } else {
+                score -= 8;
+                blocker = 'Broker exports or ACE files are not yet assembled.';
+            }
+
+            if (formData.estimateMode === 'upload') {
+                score += 8;
+                rationale.push('upload-assisted review should improve estimate quality');
+            }
+
+            const readiness = Math.min(95, Math.max(18, score));
+            const confidence = score >= 82 ? 'High' : score >= 58 ? 'Medium' : 'Low';
+            const eligibility = formData.importsDirectly === 'no'
+                ? 'Lower likelihood'
+                : score >= 78
+                    ? 'Likely eligible'
+                    : score >= 52
+                        ? 'Possible fit'
+                        : 'Needs validation';
+
+            let min = 20000;
+            let max = 60000;
+            if (formData.entryVolume === 'medium') {
+                min += 50000;
+                max += 120000;
+            } else if (formData.entryVolume === 'large') {
+                min += 140000;
+                max += 320000;
+            }
+            if (formData.importSpend === '5to25') {
+                min += 30000;
+                max += 70000;
+            } else if (formData.importSpend === '25plus') {
+                min += 90000;
+                max += 180000;
+            }
+            if (formData.dutyExposure === 'moderate') {
+                min += 20000;
+                max += 50000;
+            } else if (formData.dutyExposure === 'high') {
+                min += 70000;
+                max += 160000;
+            }
             if (formData.importsDirectly === 'no') {
-                eligibility = 'Probably not a fit';
-                confidence = 'Low';
-                range = 'Unable to estimate confidently';
-                nextStep = 'Verify whether another entity or broker relationship controls import and duty records.';
-                explanation = 'If the business did not import directly, the recovery path may sit with another entity or require a different claimant structure.';
+                min = 0;
+                max = 0;
             }
 
-            return { eligibility, confidence, range, readiness: `${readiness}%`, nextStep, explanation };
+            const range = max > 0
+                ? `$${min.toLocaleString()} - $${max.toLocaleString()}`
+                : 'Unable to estimate confidently';
+
+            const opportunityTier = max >= 300000 ? 'Significant' : max >= 150000 ? 'Material' : max >= 70000 ? 'Moderate' : 'Emerging';
+
+            const nextStep = formData.dataAvailability === 'yes'
+                ? 'Move into a detailed review and reconcile broker exports to validate a claim-ready path.'
+                : formData.estimateMode === 'upload'
+                    ? 'Assemble broker or ACE files so the upload-assisted review can move from directional to data-backed.'
+                    : 'Request a detailed review to confirm claimant structure, tighten the estimate, and identify the missing data.';
+
+            const explanation = rationale.length
+                ? `This estimate is directional because ${rationale.join(', ')}.`
+                : 'This estimate is directional and still needs more claimant and source-data clarity.';
+
+            return { eligibility, confidence, range, readiness: `${readiness}%`, nextStep, explanation, blocker, entries: entries.toLocaleString(), opportunityTier };
         }
 
         function renderResults() {
@@ -506,8 +604,10 @@
             document.getElementById('resultEligibility').textContent = result.eligibility;
             document.getElementById('resultConfidence').textContent = result.confidence;
             document.getElementById('resultReadiness').textContent = result.readiness;
+            document.getElementById('resultEntries').textContent = result.entries;
+            document.getElementById('resultBlocker').textContent = result.blocker;
             document.getElementById('resultNextStep').textContent = result.nextStep;
-            document.getElementById('resultExplanation').textContent = result.explanation;
+            document.getElementById('resultExplanation').textContent = `${result.explanation} Opportunity tier: ${result.opportunityTier}.`;
         }
 
         function renderStep() {
