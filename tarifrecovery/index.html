@@ -68,13 +68,23 @@
         .hero-summary-grid > div {
             height: 100%;
         }
+        .hero-copy-stack {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
         @media (min-width: 1024px) {
             .hero-shell {
                 align-items: start;
             }
             .hero-copy {
                 padding-right: 2rem;
-                padding-top: 0;
+            }
+            .hero-copy-stack {
+                padding-top: 1rem;
+            }
+            .hero-summary-card {
+                margin-top: 0;
             }
         }
         @media (max-width: 1023px) {
@@ -151,8 +161,8 @@
 
         <main>
             <section class="hero-grid px-6 pt-4 pb-14 md:pt-6 md:pb-18">
-                <div class="hero-shell max-w-7xl mx-auto grid lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] gap-8 xl:gap-12 items-center">
-                    <div class="hero-copy">
+                <div class="hero-shell max-w-7xl mx-auto grid lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] gap-8 xl:gap-12 items-start">
+                    <div class="hero-copy hero-copy-stack">
                         <div class="inline-flex items-center gap-2 rounded-full border border-orange-400/20 bg-orange-400/10 px-4 py-2 text-sm text-orange-200 mb-5">
                             Built for furniture importers, wholesalers, retailers, and brokers
                         </div>
@@ -169,7 +179,7 @@
                         <p class="text-sm text-slate-400 max-w-xl">Decision-support only. Not legal advice. Final filing decisions should be reviewed with the appropriate broker, trade advisor, or internal team.</p>
                     </div>
 
-                    <div class="hero-summary-card glass-card rounded-3xl p-6 md:p-7 shadow-2xl shadow-orange-500/10">
+                    <div class="hero-summary-card glass-card rounded-3xl p-6 md:p-7 shadow-2xl shadow-orange-500/10 lg:mt-0">
                         <div class="flex items-start justify-between gap-4 mb-5">
                             <div>
                                 <div class="text-sm text-slate-400">What executives get</div>
