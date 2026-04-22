@@ -9,6 +9,14 @@
     {
       "source": "/pointy/:path*",
       "destination": "https://zapsight-market-planner.vercel.app/pointy/:path*"
+    },
+    {
+      "source": "/blog/furniture-store-high-intent-shoppers-ai-conversion",
+      "destination": "/blog/2026-04-22-furniture-store-high-intent-shoppers-ai-conversion.html"
+    },
+    {
+      "source": "/blog/2026-04-22-furniture-store-high-intent-shoppers-ai-conversion",
+      "destination": "/blog/2026-04-22-furniture-store-high-intent-shoppers-ai-conversion.html"
     }
   ]
 }
