@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Pilot | AI Shopping Assistant for Furniture Retailers</title>
+    <meta name="description" content="Shop Pilot is an AI sales assistant for furniture and mattress retailers that guides shoppers through large catalogs and helps them find the right products.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zapsight.us/shop-pilot">
+    <meta property="og:title" content="Shop Pilot | AI Shopping Assistant for Furniture Retailers">
+    <meta property="og:description" content="A conversion layer for furniture websites with complex catalogs and high-consideration shoppers.">
+    <meta property="og:image" content="https://zapsight.us/og-image-v4.jpg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { inter: ['Inter', 'sans-serif'] },
+                    colors: {
+                        'zap-orange': '#ff6b35',
+                        'zap-pink': '#ff3d7f',
+                        'zap-dark': '#0a0a0a'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; overflow-x: hidden; }
+        .gradient-text { background: linear-gradient(135deg, #ff6b35 0%, #ff3d7f 55%, #f7931e 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .gradient-bg { background: linear-gradient(135deg, #ff6b35 0%, #ff3d7f 100%); }
+        .glass-card { background: rgba(26,26,26,0.74); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); }
+        .hero-bg { background: radial-gradient(circle at 15% 10%, rgba(255,107,53,0.2), transparent 32%), radial-gradient(circle at 85% 20%, rgba(255,61,127,0.18), transparent 34%), #0a0a0a; }
+        .metric { border-left: 2px solid #ff6b35; }
+    </style>
+    <!-- RB2B Visitor Identification -->
+    <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("W6Z57HZ9ZQOX");</script>
+</head>
+<body>
+<nav class="fixed top-0 left-0 right-0 z-50 bg-zap-dark/85 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-3">
+            <img src="/logo.jpg" alt="ZapSight" class="h-9">
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+            <a href="/shop-pilot" class="text-white font-semibold">Shop Pilot</a>
+            <a href="/roi" class="text-gray-300 hover:text-white transition">ROI Calculator</a>
+            <a href="/blog/" class="text-gray-300 hover:text-white transition">Blog</a>
+            <a href="/audit" class="gradient-bg text-white px-5 py-2.5 rounded-lg font-semibold hover:opacity-90 transition">Get Free Audit</a>
+        </div>
+        <a href="/audit" class="md:hidden gradient-bg text-white px-4 py-2 rounded-lg font-semibold text-sm">Audit</a>
+    </div>
+</nav>
+
+<main class="hero-bg">
+    <section class="pt-32 pb-20 px-6">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-[1.02fr_0.98fr] gap-10 items-center">
+            <div>
+                <p class="text-zap-orange font-semibold uppercase tracking-wide mb-4">Shop Pilot</p>
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">An AI sales assistant for furniture websites with too many choices.</h1>
+                <p class="text-lg md:text-xl text-gray-400 leading-relaxed mb-8">Shop Pilot asks buying questions, recommends the right products, explains fit, and moves shoppers toward checkout, a showroom visit, or a sales handoff.</p>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <a href="/audit" class="gradient-bg text-white text-center px-8 py-4 rounded-xl font-bold hover:opacity-90 transition">Get a Free AI Shopping Audit</a>
+                    <a href="https://calendly.com/blake-zapsight/30min" target="_blank" class="border border-white/15 text-white text-center px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition">Book a Demo</a>
+                </div>
+            </div>
+            <div class="glass-card rounded-3xl p-4 md:p-6">
+                <img src="/shop-pilot-demo.jpg" alt="Shop Pilot AI shopping assistant demo" class="w-full rounded-2xl border border-white/10">
+                <div class="grid grid-cols-3 gap-3 mt-4">
+                    <div class="metric pl-3">
+                        <p class="text-white font-bold">Catalog</p>
+                        <p class="text-gray-500 text-sm">Large SKU sets</p>
+                    </div>
+                    <div class="metric pl-3">
+                        <p class="text-white font-bold">Guidance</p>
+                        <p class="text-gray-500 text-sm">Conversational fit</p>
+                    </div>
+                    <div class="metric pl-3">
+                        <p class="text-white font-bold">Action</p>
+                        <p class="text-gray-500 text-sm">Checkout or handoff</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="max-w-3xl mb-12">
+                <p class="text-zap-orange font-semibold uppercase tracking-wide mb-3">Why it works</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Furniture buying needs guidance, not another filter menu.</h2>
+                <p class="text-gray-400 text-lg">The best showroom associates do not start with a product grid. They ask what the customer is trying to solve. Shop Pilot brings that behavior to your website.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-5">
+                <div class="glass-card rounded-2xl p-7">
+                    <h3 class="text-xl font-bold mb-3">Discover Intent</h3>
+                    <p class="text-gray-400">Capture room type, style, size constraints, use case, budget, timeline, and preferences while the shopper is still engaged.</p>
+                </div>
+                <div class="glass-card rounded-2xl p-7">
+                    <h3 class="text-xl font-bold mb-3">Recommend With Reasons</h3>
+                    <p class="text-gray-400">Show a focused set of products and explain why each item fits the shopper's stated needs.</p>
+                </div>
+                <div class="glass-card rounded-2xl p-7">
+                    <h3 class="text-xl font-bold mb-3">Preserve Context</h3>
+                    <p class="text-gray-400">When a shopper is ready for a human, your team can see what they asked, liked, rejected, and considered.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 items-start">
+            <div>
+                <p class="text-zap-orange font-semibold uppercase tracking-wide mb-3">Best-fit retailers</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">Built for high-AOV, high-consideration categories.</h2>
+                <p class="text-gray-400 text-lg mb-8">Shop Pilot is strongest when shoppers care about fit, style, room context, comfort, financing, delivery, and confidence before purchase.</p>
+                <a href="/roi" class="inline-flex gradient-bg text-white px-7 py-3 rounded-xl font-bold hover:opacity-90 transition">Estimate Your ROI</a>
+            </div>
+            <div class="glass-card rounded-3xl p-8">
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-white font-bold mb-1">Furniture and mattress first</h3>
+                        <p class="text-gray-400">Complex catalogs, large average order values, and meaningful discovery needs.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-bold mb-1">10+ locations or strong ecommerce traffic</h3>
+                        <p class="text-gray-400">Enough digital intent for conversion gains and conversation insights to matter.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-bold mb-1">Existing systems stay in place</h3>
+                        <p class="text-gray-400">ZapSight layers intelligence on top of your current catalog, ecommerce, and retail systems.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-bold mb-1">Expansion path after proof</h3>
+                        <p class="text-gray-400">Once conversion is working, ZapSight can expand into executive reporting, operations workflows, and data intelligence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 px-6">
+        <div class="max-w-4xl mx-auto glass-card rounded-3xl p-8 md:p-12 text-center">
+            <p class="text-zap-orange font-semibold uppercase tracking-wide mb-3">Start with your site</p>
+            <h2 class="text-3xl md:text-5xl font-bold mb-6">Get a free AI Shopping Experience Audit.</h2>
+            <p class="text-gray-400 text-lg mb-8">We will review your current product discovery path and send back the biggest places Shop Pilot could improve the shopper journey.</p>
+            <a href="/audit" class="inline-flex gradient-bg text-white px-9 py-4 rounded-xl font-bold hover:opacity-90 transition">Request the Audit</a>
+        </div>
+    </section>
+</main>
+
+<footer class="border-t border-white/5 py-8 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+        <img src="/logo.jpg" alt="ZapSight" class="h-8">
+        <div class="flex items-center gap-6 text-sm text-gray-500">
+            <a href="/" class="hover:text-white transition">Home</a>
+            <a href="/audit" class="hover:text-white transition">Free Audit</a>
+            <a href="https://zapsight.com" target="_blank" class="hover:text-white transition">zapsight.com</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
