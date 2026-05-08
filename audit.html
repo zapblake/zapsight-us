@@ -99,7 +99,7 @@
                 <h3 class="text-white font-bold text-2xl mb-3">You're on the list.</h3>
                 <p class="text-gray-400 mb-2">We'll have your audit ready within 24 hours.</p>
                 <p class="text-gray-500 text-sm mb-8">Check your inbox — it'll come from blake@zapsight.com</p>
-                <a href="https://calendly.com/blake-zapsight/30min" target="_blank" class="inline-block gradient-bg text-white font-semibold px-8 py-3 rounded-lg hover:opacity-90 transition-opacity">Skip the wait — book a call now</a>
+                <a href="https://calendly.com/blake-zapsight/30min" target="_blank" class="inline-block gradient-bg text-white font-semibold px-8 py-3 rounded-lg hover:opacity-90 transition-opacity">Book an audit review</a>
             </div>
         </div>
         <div class="mt-8 glass-card rounded-2xl p-6">
@@ -135,6 +135,8 @@ document.getElementById('auditForm').addEventListener('submit', async function(e
     errorState.classList.add('hidden');
     const params = new URLSearchParams(window.location.search);
     const data = {
+        offer: 'AI Shopping Experience Audit',
+        sourcePage: 'audit',
         name: document.getElementById('fname').value,
         email: document.getElementById('femail').value,
         phone: document.getElementById('fphone').value,
@@ -142,6 +144,7 @@ document.getElementById('auditForm').addEventListener('submit', async function(e
         website: document.getElementById('fwebsite').value,
         locations: document.getElementById('flocations').value,
         challenge: document.getElementById('fchallenge').value,
+        highFitSignal: ['6-20 locations','21-50 locations','50+ locations'].includes(document.getElementById('flocations').value) || ['conversion','discovery'].includes(document.getElementById('fchallenge').value),
         submittedAt: new Date().toISOString(),
         page: window.location.pathname,
         sourceUrl: window.location.href,
@@ -164,8 +167,7 @@ document.getElementById('auditForm').addEventListener('submit', async function(e
         errorState.classList.remove('hidden');
         return;
     }
-    document.getElementById('auditForm').classList.add('hidden');
-    document.getElementById('successState').classList.remove('hidden');
+    window.location.href = '/thank-you?source=audit';
 });
 </script>
 </body>

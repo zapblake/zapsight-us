@@ -19,6 +19,8 @@ Secondary capabilities include AI-powered data warehousing, executive dashboards
 - [Home](https://zapsight.us): Main landing page for Shop Pilot, ZapSight's AI shopping assistant for furniture retailers
 - [Shop Pilot](https://zapsight.us/shop-pilot): Product page for ZapSight's guided AI shopping assistant and conversion layer
 - [AI Shopping Experience Audit](https://zapsight.us/audit): Free assessment of a retailer's product discovery path, catalog friction, and Shop Pilot fit
+- [Outbound AI Shopping Audit](https://zapsight.us/ai-shopping-audit): Focused campaign landing page for audit requests from cold outbound and paid traffic
+- [Shop Pilot Demo](https://zapsight.us/demo): Short walkthrough page showing how Shop Pilot guides shoppers from intent to recommendation
 - [Blog](https://zapsight.us/blog): Articles on AI in furniture retail, conversion optimization, digital transformation
 
 ## Blog Posts
