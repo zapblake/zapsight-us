@@ -2,67 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://zapsight.us/</loc>
-    <lastmod>2026-03-16</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://zapsight.us/audit</loc>
-    <lastmod>2026-03-16</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://zapsight.us/roi</loc>
-    <lastmod>2026-03-16</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://zapsight.us/blog/ai-shopping-assistant-furniture-stores</loc>
-    <lastmod>2026-03-10</lastmod>
+    <loc>https://zapsight.us/blog/2026-05-13-furniture-retail-ai-trends-2026</loc>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://zapsight.us/blog/furniture-store-ecommerce-conversion-rate</loc>
-    <lastmod>2026-03-13</lastmod>
+    <loc>https://zapsight.us/blog/2026-05-08-furniture-store-website-conversion-rate</loc>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://zapsight.us/blog/furniture-store-conversion-rate</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://zapsight.us/blog/2026-04-29-how-to-increase-furniture-store-website-conversions</loc>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://zapsight.us/blog/furniture-customer-journey-online-to-in-store</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://zapsight.us/blog/2026-04-27-furniture-store-ai-roi-first-90-days</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://zapsight.us/blog/rsa-evaluation-hidden-cost</loc>
-    <lastmod>2026-03-15</lastmod>
+    <loc>https://zapsight.us/blog/2026-04-26-furniture-store-memorial-day-ai-prep</loc>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://zapsight.us/blog/high-point-market-2026</loc>
-    <lastmod>2026-03-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://zapsight.us/blog/2026-03-16-ai-for-regional-furniture-retailers</loc>
-    <lastmod>2026-03-16</lastmod>
+    <loc>https://zapsight.us/blog/2026-04-24-furniture-store-2-percent-conversion-lift-roi</loc>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://zapsight.us/blog/2026-03-18-reduce-furniture-sales-associate-turnover-with-ai</loc>
-    <lastmod>2026-03-18</lastmod>
+    <loc>https://zapsight.us/blog/2026-04-22-furniture-store-high-intent-shoppers-ai-conversion</loc>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -81,6 +75,126 @@
   <url>
     <loc>https://zapsight.us/blog/2026-04-20-tariff-refund-readiness-checklist-furniture</loc>
     <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zapsight.us/blog/2026-04-20-furniture-store-after-hours-ai-shopping-assistant</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zapsight.us/blog/2026-04-19-furniture-retail-ai-trends-2026</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zapsight.us/blog/2026-04-17-reduce-furniture-store-bounce-rate-ai</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zapsight.us/blog/2026-04-15-ai-for-regional-furniture-retailers</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zapsight.us/blog/2026-04-13-reduce-furniture-rsa-turnover-with-ai</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zapsight.us/blog/2026-04-12-ai-vendor-questions-high-point-market-2026</loc>
+    <lastmod>2026-04-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zapsight.us/blog/2026-04-10-furniture-ecommerce-conversion-benchmarks-2026</loc>
+    <lastmod>2026-04-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zapsight.us/blog/2026-04-08-claude-mythos-furniture-retail-private-data-security</loc>
+    <lastmod>2026-04-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zapsight.us/blog/2026-04-06-furniture-store-showroom-online-gap-ai</loc>
+    <lastmod>2026-04-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zapsight.us/blog/2026-04-03-macys-ai-shopping-assistant-lesson-furniture-retailers</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zapsight.us/blog/2026-04-01-shoptalk-2026-ai-furniture-retail</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zapsight.us/blog/2026-03-30-furniture-ecommerce-conversion-gap</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zapsight.us/blog/2026-03-29-furniture-customer-journey-online-to-in-store-2026</loc>
+    <lastmod>2026-03-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zapsight.us/blog/2026-03-27-furniture-store-digital-transformation</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zapsight.us/blog/2026-03-25-furniture-store-lead-generation-ai</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zapsight.us/blog/2026-03-23-ai-shopping-assistant-furniture-store</loc>
+    <lastmod>2026-03-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zapsight.us/blog/2026-03-22-how-to-increase-furniture-store-website-conversions</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zapsight.us/blog/2026-03-20-furniture-retail-ai-trends-2026</loc>
+    <lastmod>2026-03-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zapsight.us/blog/2026-03-18-reduce-furniture-sales-associate-turnover-with-ai</loc>
+    <lastmod>2026-03-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://zapsight.us/blog/2026-03-16-ai-for-regional-furniture-retailers</loc>
+    <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
